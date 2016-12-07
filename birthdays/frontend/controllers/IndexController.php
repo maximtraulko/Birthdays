@@ -27,7 +27,8 @@ class IndexController extends Controller
 		return $this->render('view', ['employees'=>$employees]);
 	}
 	
-	public function actionView2($id){
+	public function actionView2($id)
+	{
 		$employee = Employee::findOne($id);
 		if ($employee) {
 			return $this->render('view2',['employee' => $employee]);
@@ -36,7 +37,8 @@ class IndexController extends Controller
 		}
 	}
 	   
-	public function actionList(){
+	public function actionList()
+	{
 		$depatments = Depatment::find()
 		-> orderBy (['name' => SORT_ASC, 'department_id' =>
 		SORT_ASC]) 
@@ -48,7 +50,7 @@ class IndexController extends Controller
 	{
 		$employees = Depatment::findOne($department_id);
 		if ($employees) {
-		return $this->render('list2',['employees' => $employees]);
+			return $this->render('list2',['employees' => $employees]);
 		} else {
 			throw new \yii\web\NotFoundHttpException ('Отдел не найден');
 		}

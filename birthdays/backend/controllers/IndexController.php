@@ -122,7 +122,7 @@ class IndexController extends Controller
 				}
 			}
 			return $this->render('edit_employee', ['employee' => $employee, 'depatment'=>$depatment]);
-    } else {
+		} else {
 			throw new \yii\web\NotFoundHttpException('Сотрудник не найден');
 		}
     }
