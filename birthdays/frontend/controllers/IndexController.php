@@ -32,7 +32,7 @@ class IndexController extends Controller
 		if ($employee) {
 			return $this->render('view2',['employee' => $employee]);
 		} else {
-			return 'Побробная информация не найдена';
+			throw new \yii\web\NotFoundHttpException ('Сотрудник не найден');
 		}
 	}
 	   
@@ -44,8 +44,13 @@ class IndexController extends Controller
 		return $this->render('list', ['depatments'=>$depatments]);
 	}
 	
-	public function actionList2($department_id){
+	public function actionList2($department_id)
+	{
 		$employees = Depatment::findOne($department_id);
+		if ($employees) {
 		return $this->render('list2',['employees' => $employees]);
+		} else {
+			throw new \yii\web\NotFoundHttpException ('Отдел не найден');
+		}
 	}	
 }
